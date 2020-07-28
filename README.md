@@ -1,2 +1,1 @@
-# template-nextgen-mit-yousee
-A basic repository template used by nextgen mit yousee
+# !!PUBLIC!! Repository containing various shared terraform modules
