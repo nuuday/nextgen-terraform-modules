@@ -51,7 +51,7 @@ resource "aws_ecr_lifecycle_policy" "this" {
       },
       {
         rulePriority = 5
-        description  = "keep the last 5 master images"
+        description  = "keep the last 5 stable images"
         selection = {
           tagStatus     = "tagged"
           tagPrefixList = ["stable-"]
@@ -64,11 +64,11 @@ resource "aws_ecr_lifecycle_policy" "this" {
       },
       {
         rulePriority = 100
-        description  = "any other images"
+        description  = "other images"
         selection = {
           tagStatus   = "any"
           countType   = "imageCountMoreThan"
-          countNumber = 25
+          countNumber = 15
         }
         action = {
           type = "expire"
