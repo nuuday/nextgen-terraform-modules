@@ -5,12 +5,12 @@ resource "aws_ecr_repository" "repository" {
   image_scanning_configuration {
     scan_on_push = true
   }
-  tags                 = var.common_tags
+  tags = var.common_tags
 }
 
 resource "aws_ecr_repository_policy" "policy" {
   repository = aws_ecr_repository.repository.name
-  policy = <<EOF
+  policy     = <<EOF
     {
       "Statement": [
         {
@@ -31,4 +31,51 @@ resource "aws_ecr_repository_policy" "policy" {
       "Version": "2008-10-17"
     }
     EOF
+}
+
+resource "aws_ecr_lifecycle_policy" "this" {
+  policy = jsonencode({
+    rules = [
+      {
+        rulePriority = 1
+        description  = "keep the last 5 production images"
+        selection = {
+          tagStatus     = "tagged"
+          tagPrefixList = ["v"]
+          countType     = "imageCountMoreThan"
+          countNumber   = 5
+        }
+        action = {
+          type = "expire"
+        }
+      },
+      {
+        rulePriority = 5
+        description  = "keep the last 5 master images"
+        selection = {
+          tagStatus     = "tagged"
+          tagPrefixList = ["stable-"]
+          countType     = "imageCountMoreThan"
+          countNumber   = 5
+        }
+        action = {
+          type = "expire"
+        }
+      },
+      {
+        rulePriority = 100
+        description  = "any other images"
+        selection = {
+          tagStatus   = "any"
+          countType   = "imageCountMoreThan"
+          countNumber = 25
+        }
+        action = {
+          type = "expire"
+        }
+      },
+    ]
+  })
+
+  repository = aws_ecr_repository.repository.name
 }
