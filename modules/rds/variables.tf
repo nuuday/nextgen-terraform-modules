@@ -48,3 +48,11 @@ variable "backup_window" {
 variable "backup_retention_period" {
   type = number
 }
+
+variable "multi_az" {
+  type = bool
+}
+
+variable "deletion_protection" {
+  type = bool
+}

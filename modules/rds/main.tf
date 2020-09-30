@@ -35,8 +35,8 @@ module "db" {
   major_engine_version            = var.major_engine_version
   auto_minor_version_upgrade      = var.auto_minor_version_upgrade
   final_snapshot_identifier       = "${var.name}-rds-final-snapshot"
-  multi_az                        = false
-  deletion_protection             = false
+  multi_az                        = var.multi_az
+  deletion_protection             = var.deletion_protection
   parameters = [
     {
       name  = "rds.force_ssl"
