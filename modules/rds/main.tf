@@ -9,7 +9,7 @@ resource "aws_security_group_rule" "cluster-rules" {
   security_group_id        = aws_security_group.this.id
   to_port                  = module.db.this_db_instance_port
   type                     = "ingress"
-  source_security_group_id = var.source_security_group
+  cidr_blocks              = var.cidr_blocks
 }
 
 module "db" {

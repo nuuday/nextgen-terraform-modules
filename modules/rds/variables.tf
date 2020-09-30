@@ -1,4 +1,6 @@
-variable "source_security_group" {}
+variable "cidr_blocks" {
+  type = list(string)
+}
 
 variable "vpc_id" {}
 
