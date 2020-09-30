@@ -40,7 +40,7 @@ module "db" {
   parameters = [
     {
       name  = "rds.force_ssl"
-      value = "0" #Should be set to 1 once we got aws cert for postgres sql installed in our docker images    
+      value = "1"
       apply_method = "immediate"
     },
     {
