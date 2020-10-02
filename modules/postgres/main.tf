@@ -4,15 +4,15 @@ resource "aws_security_group" "this" {
 }
 
 resource "aws_security_group_rule" "cluster-rules" {
-  from_port                = module.db.this_db_instance_port
+  from_port                = module.postgres_db.this_db_instance_port
   protocol                 = "tcp"
   security_group_id        = aws_security_group.this.id
-  to_port                  = module.db.this_db_instance_port
+  to_port                  = module.postgres_db.this_db_instance_port
   type                     = "ingress"
   cidr_blocks              = var.cidr_blocks
 }
 
-module "db" {
+module "postgres_db" {
   source = "github.com/terraform-aws-modules/terraform-aws-rds?ref=v2.18.0"
 
   identifier                      = var.name
