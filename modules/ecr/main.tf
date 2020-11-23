@@ -20,9 +20,7 @@ resource "aws_ecr_repository_policy" "policy" {
             "ecr:GetAuthorizationToken"
           ],
           "Principal": {
-            "AWS": [
-              "${var.principal}"
-            ]
+            "AWS": ${jsonencode(var.principals)}
           },
           "Effect": "Allow",
           "Sid": "Allow pull"
