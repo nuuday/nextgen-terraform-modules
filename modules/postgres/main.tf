@@ -34,6 +34,7 @@ module "postgres_db" {
   family                          = var.family
   major_engine_version            = var.major_engine_version
   auto_minor_version_upgrade      = var.auto_minor_version_upgrade
+  allow_major_version_upgrade     = var.allow_major_version_upgrade
   final_snapshot_identifier       = "${var.name}-rds-final-snapshot"
   multi_az                        = var.multi_az
   deletion_protection             = var.deletion_protection

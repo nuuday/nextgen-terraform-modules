@@ -35,6 +35,11 @@ variable "auto_minor_version_upgrade" {
   default = true
 }
 
+variable "allow_major_version_upgrade" {
+  type = bool
+  default = false
+}
+
 variable "family" {
   type = string
 }
