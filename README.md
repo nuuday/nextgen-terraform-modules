@@ -1,1 +1,2 @@
-# !!PUBLIC!! Repository containing various shared terraform modules
+# Terraform modules for nextgen mit yousee
+Terraform modules for nextgen mit yousee infrastructure
