@@ -1,6 +1,6 @@
 
 resource "aws_kms_key" "vault_key" {
-  description = "Vault key ${var.name}"
+  description = "Vault key for ${var.name}"
   key_usage   = "ENCRYPT_DECRYPT"
   tags        = var.common_tags
 }
