@@ -1,0 +1,36 @@
+{
+  "types": [
+    {
+      "type": "feat",
+      "section": "Features"
+    },
+    {
+      "type": "fix",
+      "section": "Bug Fixes"
+    },
+    {
+      "type": "refactor",
+      "section": "Refactors"
+    },
+    {
+      "type": "test",
+      "section": "Improvements"
+    },
+    {
+      "type": "improvement",
+      "section": "Improvements"
+    },
+    {
+      "type": "build",
+      "section": "Build System"
+    },
+    {
+      "type": "ci",
+      "section": "Build System"
+    },
+    {
+      "type": "chore",
+      "section": "Others"
+    }
+  ]
+}

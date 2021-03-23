@@ -8,6 +8,8 @@ variable "database_instance_type" {}
 
 variable "database_storage_size" {}
 
+variable "database_storage_max_size" {}
+
 variable "name" {}
 
 variable "user" {}

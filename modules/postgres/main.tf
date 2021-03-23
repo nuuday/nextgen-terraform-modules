@@ -20,6 +20,7 @@ module "postgres_db" {
   engine_version                  = var.engine_version
   instance_class                  = var.database_instance_type
   allocated_storage               = var.database_storage_size
+  max_allocated_storage           = var.database_storage_max_size
   storage_encrypted               = true
   username                        = var.user
   password                        = var.password
