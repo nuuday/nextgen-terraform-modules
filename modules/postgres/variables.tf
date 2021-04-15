@@ -75,4 +75,6 @@ variable "connection_limit" {
 variable "cpu_threshold" {
 }
 
-variable "sns_topic_arn" {}
+variable "sns_topic_arn" {
+  type = list(string)
+}
