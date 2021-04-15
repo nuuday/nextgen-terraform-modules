@@ -4,7 +4,7 @@ resource "aws_cloudwatch_metric_alarm" "free_storage_alert" {
   alarm_name          = "${var.name}-free-storage-alert"
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = "2"
-  metric_name         = "CPUUtilization"
+  metric_name         = "FreeStorageSpace"
   namespace           = "AWS/RDS"
   period              = "300"
   statistic           = "Average"
