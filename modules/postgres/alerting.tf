@@ -53,3 +53,21 @@ resource "aws_cloudwatch_metric_alarm" "CPU_threshold" {
   alarm_actions       = var.sns_topic_arn
   ok_actions          = var.sns_topic_arn
 }
+
+resource "aws_cloudwatch_metric_alarm" "memory_threshold" {
+  alarm_name          = "${var.name}-memory-threshold"
+  comparison_operator = "LessThanOrEqualToThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "FreeableMemory"
+  namespace           = "AWS/RDS"
+  period              = "120"
+  statistic           = "Average"
+  threshold           = var.freeable_memory_threshold
+  dimensions = {
+    DBInstanceIdentifier = var.name
+  }
+  alarm_description         = "freeable memory for ${var.name} database is has reached threshold"
+  insufficient_data_actions = []
+  alarm_actions       = var.sns_topic_arn
+  ok_actions          = var.sns_topic_arn
+}
