@@ -4,12 +4,12 @@ resource "aws_security_group" "this" {
 }
 
 resource "aws_security_group_rule" "cluster-rules" {
-  from_port                = module.postgres_db.this_db_instance_port
-  protocol                 = "tcp"
-  security_group_id        = aws_security_group.this.id
-  to_port                  = module.postgres_db.this_db_instance_port
-  type                     = "ingress"
-  cidr_blocks              = var.cidr_blocks
+  from_port         = module.postgres_db.this_db_instance_port
+  protocol          = "tcp"
+  security_group_id = aws_security_group.this.id
+  to_port           = module.postgres_db.this_db_instance_port
+  type              = "ingress"
+  cidr_blocks       = var.cidr_blocks
 }
 
 module "postgres_db" {
@@ -41,33 +41,33 @@ module "postgres_db" {
   deletion_protection             = var.deletion_protection
   parameters = [
     {
-      name  = "rds.force_ssl"
-      value = "1"
+      name         = "rds.force_ssl"
+      value        = "1"
       apply_method = "immediate"
     },
     {
-      name  = "shared_preload_libraries"
-      value = "pg_stat_statements,pgaudit"
+      name         = "shared_preload_libraries"
+      value        = "pg_stat_statements,pgaudit"
       apply_method = "pending-reboot"
     },
     {
-      name  = "pgaudit.log_catalog"
-      value = "0"
+      name         = "pgaudit.log_catalog"
+      value        = "0"
       apply_method = "pending-reboot"
     },
     {
-      name  = "pgaudit.log_parameter"
-      value = "1"
+      name         = "pgaudit.log_parameter"
+      value        = "1"
       apply_method = "pending-reboot"
     },
     {
-      name  = "pgaudit.role"
-      value = "rds_pgaudit"
+      name         = "pgaudit.role"
+      value        = "rds_pgaudit"
       apply_method = "pending-reboot"
     },
     {
-      name  = "pgaudit.log"
-      value = "all"
+      name         = "pgaudit.log"
+      value        = "all"
       apply_method = "pending-reboot"
     }
   ]

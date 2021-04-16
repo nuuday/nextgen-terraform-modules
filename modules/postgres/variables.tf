@@ -33,12 +33,12 @@ variable "major_engine_version" {
 }
 
 variable "auto_minor_version_upgrade" {
-  type = bool
+  type    = bool
   default = true
 }
 
 variable "allow_major_version_upgrade" {
-  type = bool
+  type    = bool
   default = false
 }
 
@@ -64,4 +64,20 @@ variable "multi_az" {
 
 variable "deletion_protection" {
   type = bool
+}
+
+variable "free_storage_alert_limit" {
+}
+
+variable "connection_limit" {
+}
+
+variable "cpu_threshold" {
+}
+
+variable "freeable_memory_threshold" {
+}
+
+variable "sns_topic_arn" {
+  type = list(string)
 }
